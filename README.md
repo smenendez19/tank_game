@@ -1,2 +1,6 @@
-# tank_game
-Juego de Tanques basado en Battle City y hecho con Python
+# Tank game
+
+## Descripcion
+
+Un juego de tanques basado en Battle City de NES
+
