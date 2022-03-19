@@ -8,15 +8,20 @@ from levels import level_1, level_2
 from classes import Tank, Block, Bullet, DestructiveBlock, EnemyTank
 from classes.colors import *
 import random
+import yaml
 
 # ENV VARS
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
-# Variables
-FPS = 60
-RESOLUTION = (525, 525)
-RESOLUTION_MAP = (500, 500)
-TITLE = "Tank Game"
+# Configuration YAML
+with open("config.yaml", "r") as file:
+    CONFIG = yaml.load(file, Loader=yaml.FullLoader)
+FPS = CONFIG["FPS"]
+RESOLUTION = CONFIG["RESOLUTION"]
+RESOLUTION_MAP = CONFIG["RESOLUTION_MAP"]
+TITLE = CONFIG["TITLE"]
+
+# TICKS 
 TICKS_MOVE = 3
 TICKS_BULLET = 25
 TICKS_ENEMIES = 3
