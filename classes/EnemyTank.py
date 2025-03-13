@@ -1,6 +1,9 @@
-import pygame
-from classes.colors import *
 import random
+
+import pygame
+
+from classes.colors import BLACK, GRAY, RED
+
 
 class EnemyTank:
     X = 0
@@ -11,6 +14,8 @@ class EnemyTank:
     color = RED
     direction = "L"
     block_direction = 0
+    refresh = random.randint(100, 200)
+    bullet_refresh = refresh
 
     def __init__(self, X, Y, direction):
         self.X = X
@@ -32,7 +37,7 @@ class EnemyTank:
             pygame.draw.rect(screen, GRAY, (self.X + 8, self.Y + 5, self.width - 15, self.height + 10), 0)
             pygame.draw.rect(screen, BLACK, (self.X + 8, self.Y + 5, self.width - 15, self.height + 10), 1)
 
-    def move(self , direction_list):
+    def move(self, direction_list):
         direction = random.choice(direction_list)
         if self.direction not in direction_list:
             self.block_direction = 0
@@ -60,3 +65,11 @@ class EnemyTank:
             elif self.direction == "R":
                 self.X += self.speed
             self.block_direction -= 1
+
+    def fire_bullet(self):
+        if self.bullet_refresh == 0:
+            self.bullet_refresh = self.refresh
+            return True
+        else:
+            self.bullet_refresh -= 1
+            return False

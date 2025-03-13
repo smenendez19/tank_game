@@ -1,5 +1,7 @@
 import pygame
-from classes.colors import *
+
+from classes.colors import BLACK, RED
+
 
 class Block:
     X = 0

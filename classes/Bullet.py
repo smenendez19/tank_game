@@ -1,5 +1,7 @@
 import pygame
-from classes.colors import *
+
+from classes.colors import BLACK, WHITE
+
 
 class Bullet:
     X = 0

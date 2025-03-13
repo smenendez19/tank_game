@@ -1,5 +1,7 @@
 import pygame
-from classes.colors import *
+
+from classes.colors import BLACK, DARK_GREEN, GRAY
+
 
 class Tank:
     X = 0
@@ -9,6 +11,8 @@ class Tank:
     height = 25
     color = DARK_GREEN
     direction = "L"
+    destroyed = False
+    hp = 3
 
     def __init__(self, X, Y, direction):
         self.X = X
@@ -30,7 +34,7 @@ class Tank:
             pygame.draw.rect(screen, GRAY, (self.X + 8, self.Y + 5, self.width - 15, self.height + 10), 0)
             pygame.draw.rect(screen, BLACK, (self.X + 8, self.Y + 5, self.width - 15, self.height + 10), 1)
 
-    def move(self , direction):
+    def move(self, direction):
         if direction == "U":
             self.direction = "U"
             self.Y -= self.speed
@@ -45,3 +49,8 @@ class Tank:
             self.X += self.speed
         else:
             print("Invalid direction")
+
+    def hit(self):
+        self.hp -= 1
+        if self.hp == 0:
+            self.destroyed = True
